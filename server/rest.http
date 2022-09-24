@@ -1,6 +1,14 @@
-# insert product
+### get products
 
-POST http://localhost:3000/products
+GET http://localhost:8080/products
+
+### route not exist
+
+GET http://localhost:8080/abc
+
+### insert product
+
+POST http://localhost:8080/products
 Content-Type: application/json
 
 {
@@ -8,10 +16,9 @@ Content-Type: application/json
     "name": "Macbook Pro 16",
     "quantity": "10"
 }
-###
-# insert product
+### insert product
 
-POST http://localhost:3000/products
+POST http://localhost:8080/products
 Content-Type: application/json
 
 {
@@ -20,10 +27,9 @@ Content-Type: application/json
     "quantity": "100"
 }
 
-###
-# insert product
+### insert product
 
-POST http://localhost:3000/products
+POST http://localhost:8080/products
 Content-Type: application/json
 
 {
@@ -31,7 +37,15 @@ Content-Type: application/json
     "name": "Xiao Mi 11",
     "quantity": "10"
 }
-###
-# get products
 
-GET http://localhost:3000/products
+### insert product
+
+POST http://localhost:8080/products
+Content-Type: application/json
+
+{
+    "id": "5",
+    "name": "Nitro 5",
+    "quantity": "34"
+}
+

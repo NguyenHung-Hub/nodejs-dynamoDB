@@ -3,67 +3,25 @@ const AWS = require("aws-sdk");
 const multer = require("multer");
 const config = require("./src/config");
 const route = require("./src/routes");
+const createError = require("http-errors");
 
 const app = express();
-const upload = multer();
-const PORT = 3000;
+const PORT = config.PORT || 8081;
 
 app.use(express.json());
 
-console.log({
-    accessKeyId: config.ACCESSKEYID,
-    secretAccessKey: config.SECRETACCESSKEY,
-    region: config.REGION,
-});
-
-//AWS config
-// const configAWS = new AWS.Config({
-//     accessKeyId: config.ACCESSKEYID,
-//     secretAccessKey: config.SECRETACCESSKEY,
-//     region: config.REGION,
-// });
-
-// AWS.config = configAWS;
-
-// const docClient = new AWS.DynamoDB.DocumentClient();
-
 route(app);
 
-// app.get("/", (req, res, next) => {
-//     const params = {
-//         TableName: tableName,
-//     };
+app.use((req, res, next) => {
+    next(createError.NotFound("This route does not exist."));
+});
 
-//     docClient.scan(params, (error, data) => {
-//         if (error) {
-//             res.status(500).json({ error });
-//         } else {
-//             res.status(200).json({ data });
-//         }
-//     });
-// });
-
-// app.post("/", upload.fields([]), (req, res, next) => {
-//     console.log(req.body);
-//     const { id, name, quantity } = req.body;
-
-//     const params = {
-//         TableName: tableName,
-//         Item: {
-//             id,
-//             name,
-//             quantity,
-//         },
-//     };
-
-//     docClient.put(params, (error, data) => {
-//         if (error) {
-//             res.status(500).json({ error });
-//         } else {
-//             res.status(200).json({ data });
-//         }
-//     });
-// });
+app.use((err, req, res, next) => {
+    res.json({
+        status: err.status || 500,
+        message: err.message,
+    });
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
