@@ -1,0 +1,37 @@
+# insert product
+
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "id": "2",
+    "name": "Macbook Pro 16",
+    "quantity": "10"
+}
+###
+# insert product
+
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "id": "3",
+    "name": "Samsung S22 Ultra",
+    "quantity": "100"
+}
+
+###
+# insert product
+
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "id": "4",
+    "name": "Xiao Mi 11",
+    "quantity": "10"
+}
+###
+# get products
+
+GET http://localhost:3000/products
