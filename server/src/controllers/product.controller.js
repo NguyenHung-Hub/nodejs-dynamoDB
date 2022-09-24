@@ -12,7 +12,7 @@ const upload = multer();
 
 // AWS.config = configAWS;
 // const docClient = new AWS.DynamoDB.DocumentClient();
-const tableName = "product";
+const tableName = "products";
 
 const getAll = (req, res, next) => {
     const params = {
@@ -21,9 +21,25 @@ const getAll = (req, res, next) => {
 
     docClient.scan(params, (error, data) => {
         if (error) {
-            res.status(500).json({ error });
+            return res.status(500).json({ error });
         } else {
-            res.status(200).json({ data });
+            return res.status(200).json({ data });
+        }
+    });
+};
+const getItem = (req, res, next) => {
+    const params = {
+        TableName: tableName,
+        Key: {
+            HashKey: req.params.id,
+        },
+    };
+
+    docClient.get(params, (error, data) => {
+        if (error) {
+            return res.status(500).json({ error });
+        } else {
+            return res.status(200).json({ data });
         }
     });
 };
@@ -42,11 +58,38 @@ const save = (req, res, next) => {
 
     docClient.put(params, (error, data) => {
         if (error) {
-            res.status(500).json({ error });
+            return res.status(500).json({ error });
         } else {
-            res.status(200).json({ data });
+            return res.status(200).json({
+                message: "Insert success",
+                data: params.Item,
+            });
         }
     });
 };
 
-module.exports = { getAll, save };
+const remove = (req, res, next) => {
+    const { id, name } = req.body;
+    const params = {
+        TableName: tableName,
+        Key: { id },
+    };
+
+    console.log({
+        a: config.ACCESSKEYID,
+        b: config.SECRETACCESSKEY,
+        c: config.REGION,
+    });
+
+    console.log({ params });
+
+    docClient.delete(params, (error, data) => {
+        if (error) {
+            return res.status(500).json({ error });
+        } else {
+            return res.status(200).json({ data });
+        }
+    });
+};
+
+module.exports = { getAll, getItem, save, remove };

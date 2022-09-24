@@ -2,9 +2,26 @@
 
 GET http://localhost:8080/products
 
+### get one product
+
+GET http://localhost:8080/products/1
+
 ### route not exist
 
 GET http://localhost:8080/abc
+
+### remove product
+
+DELETE http://localhost:8080/products/5
+
+### remove product
+DELETE http://localhost:8080/products
+Content-Type: application/json
+
+{
+    "id":"5"
+}
+ 
 
 ### insert product
 
@@ -47,5 +64,16 @@ Content-Type: application/json
     "id": "5",
     "name": "Nitro 5",
     "quantity": "34"
+}
+
+### insert product
+
+POST http://localhost:8080/products
+Content-Type: application/json
+
+{
+    "id": "6",
+    "name": "iPhone 13 Pro",
+    "quantity": "3"
 }
 

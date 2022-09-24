@@ -17,10 +17,13 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-    res.json({
+    const errors = {
         status: err.status || 500,
         message: err.message,
-    });
+    };
+
+    console.log(errors);
+    res.json(errors);
 });
 
 app.listen(PORT, () => {
