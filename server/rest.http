@@ -4,7 +4,7 @@ GET http://localhost:8080/products
 
 ### get one product
 
-GET http://localhost:8080/products/1
+GET http://localhost:8080/products/2
 
 ### route not exist
 
@@ -29,9 +29,10 @@ POST http://localhost:8080/products
 Content-Type: application/json
 
 {
-    "id": "2",
-    "name": "Macbook Pro 16",
-    "quantity": "10"
+    "id": "1",
+    "name": "Del G5",
+    "quantity": "20",
+    "price": 34000000
 }
 ### insert product
 
@@ -40,6 +41,16 @@ Content-Type: application/json
 
 {
     "id": "3",
+    "name": "Macbook Pro 14",
+    "quantity": "10"
+}
+### insert product
+
+POST http://localhost:8080/products
+Content-Type: application/json
+
+{
+    "id": "4",
     "name": "Samsung S22 Ultra",
     "quantity": "100"
 }
@@ -50,7 +61,7 @@ POST http://localhost:8080/products
 Content-Type: application/json
 
 {
-    "id": "4",
+    "id": "5",
     "name": "Xiao Mi 11",
     "quantity": "10"
 }
@@ -61,7 +72,7 @@ POST http://localhost:8080/products
 Content-Type: application/json
 
 {
-    "id": "5",
+    "id": "6",
     "name": "Nitro 5",
     "quantity": "34"
 }
@@ -72,7 +83,7 @@ POST http://localhost:8080/products
 Content-Type: application/json
 
 {
-    "id": "6",
+    "id": "7",
     "name": "iPhone 13 Pro",
     "quantity": "3"
 }

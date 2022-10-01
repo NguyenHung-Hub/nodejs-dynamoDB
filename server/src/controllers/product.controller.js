@@ -31,7 +31,7 @@ const getItem = (req, res, next) => {
     const params = {
         TableName: tableName,
         Key: {
-            HashKey: req.params.id,
+            id: req.params.id,
         },
     };
 
@@ -45,7 +45,7 @@ const getItem = (req, res, next) => {
 };
 const save = (req, res, next) => {
     console.log(req.body);
-    const { id, name, quantity } = req.body;
+    const { id, name, quantity, price } = req.body;
 
     const params = {
         TableName: tableName,
@@ -53,6 +53,7 @@ const save = (req, res, next) => {
             id,
             name,
             quantity,
+            price,
         },
     };
 
@@ -69,7 +70,7 @@ const save = (req, res, next) => {
 };
 
 const remove = (req, res, next) => {
-    const { id, name } = req.body;
+    const { id } = req.params;
     const params = {
         TableName: tableName,
         Key: { id },
