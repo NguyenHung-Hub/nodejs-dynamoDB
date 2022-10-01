@@ -4,15 +4,15 @@ import "./App.css";
 
 function App() {
   const [products, setProducts] = useState(null);
-  const [id, setId] = useState(null);
-  const [name, setName] = useState(null);
-  const [quantity, setQuantity] = useState(null);
-  const [price, setPrice] = useState(null);
+  const [id, setId] = useState("");
+  const [name, setName] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [price, setPrice] = useState("");
 
   useEffect(() => {
     async function getData() {
       const result = await axios("http://localhost:8080/products");
-      console.log(result);
+      console.log({ result });
       setProducts(result.data);
     }
 
