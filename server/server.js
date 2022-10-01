@@ -4,11 +4,13 @@ const multer = require("multer");
 const config = require("./src/config");
 const route = require("./src/routes");
 const createError = require("http-errors");
+const cors = require("cors");
 
 const app = express();
 const PORT = config.PORT || 8081;
 
 app.use(express.json());
+app.use(cors());
 
 route(app);
 
